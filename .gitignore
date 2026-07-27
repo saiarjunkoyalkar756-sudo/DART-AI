@@ -1,0 +1,73 @@
+# ── Zip archives & unrelated tools ────────────────────────────────────────────
+*.zip
+Cs/
+DarkPs-Agent-Terminal-v1.0_/
+DarkPs-Agent-v2.0_Update*/
+TTS*/
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.Python
+env/
+venv/
+.venv/
+ENV/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+htmlcov/
+.coverage
+*.cover
+*.log
+
+# ── Environment / Secrets (NEVER commit real .env) ───────────────────────────
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets.json
+
+# ── Database files ────────────────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+app/data/
+
+# ── Node.js ───────────────────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── OS artifacts ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE / Editor ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Uploads / generated files ─────────────────────────────────────────────────
+app/data/uploads/
+app/data/*.db
+*.mp3
+*.mp4
+*.wav
+*.webm
+
+# ── Docker volumes ────────────────────────────────────────────────────────────
+postgres_data/
+redis_data/

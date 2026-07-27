@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: dart_ai_app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://dart_user:dart_pass@postgres:5432/dart_db
+      - REDIS_URL=redis://redis:6379/0
+      - ENVIRONMENT=production
+    depends_on:
+      - postgres
+      - redis
+    restart: always
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: dart_ai_postgres
+    environment:
+      POSTGRES_USER: dart_user
+      POSTGRES_PASSWORD: dart_pass
+      POSTGRES_DB: dart_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+
+  redis:
+    image: redis:7-alpine
+    container_name: dart_ai_redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+volumes:
+  postgres_data:

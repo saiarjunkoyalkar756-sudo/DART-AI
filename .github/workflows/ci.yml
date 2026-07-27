@@ -1,0 +1,58 @@
+name: DART AI v1.0 CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, staging ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint-and-test:
+    name: Code Quality & Integration Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest httpx
+
+      - name: Validate JavaScript Syntax
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node --check app/static/app.js
+
+      - name: Run Pytest Integration & Security Test Suite
+        run: python -m unittest tests/test_api.py
+
+      - name: Run Load Testing Benchmark
+        run: python tests/load_test.py
+
+  docker-build:
+    name: Build & Verify Production Docker Image
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker Container
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          tags: dart-ai:v1.0-latest

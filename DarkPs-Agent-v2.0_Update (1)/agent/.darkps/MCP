@@ -1,0 +1,6 @@
+
+~ выполните эту команду чтобы включить MCP в корне проекта а не на вашем устроистве :\
+
+
+mkdir -p ~/.darkps
+cp ~/agent/.darkps/mcp.json ~/.darkps/mcp.json
