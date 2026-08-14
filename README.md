@@ -256,3 +256,23 @@ MIT © 2025 [saiarjunkoyalkar756-sudo](https://github.com/saiarjunkoyalkar756-su
 <div align="center">
 Built with FastAPI · Powered by DeepSeek, GPT-4o & Gemini
 </div>
+
+
+## Why DART AI Studio?
+
+DART AI Studio brings chat, multimodal generation, search, retrieval, voice, and agent workflows into one self-hostable platform. It is a strong starting point for developers who want to compare providers, prototype AI products, or extend a unified workspace with new capabilities.
+
+## Verify the API Locally
+
+```bash
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+python -m pytest -q
+```
+
+You can run the application without enabling every provider, but individual features require their corresponding API keys. Keep secrets in `.env`, use a strong `SECRET_KEY`, and restrict CORS origins before deploying beyond local development.
+
+## Contributing
+
+Contributions are welcome in provider adapters, API compatibility, security controls, accessibility, test coverage, and documentation. Please include a focused pull request, tests for changed behavior, and notes about any external API assumptions. If DART AI Studio is useful to you, a star helps others find it; forks are welcome for provider integrations and self-hosted deployments.
